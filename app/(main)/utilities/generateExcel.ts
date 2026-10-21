@@ -1,6 +1,5 @@
 import { Country, Reseller } from '@/types/interface';
 import axios from 'axios';
-import * as XLSX from 'xlsx';
 
 const getAuthToken = () => {
     return localStorage.getItem('api_token') || '';
@@ -222,6 +221,7 @@ export const generateOrderExcelFile = async ({
         }));
 
         // Create worksheet
+        const XLSX = await import('xlsx');
         const ws = XLSX.utils.json_to_sheet(exportData);
         
         // Set column widths
@@ -365,6 +365,7 @@ export const generateBalanceExcelFile = async ({
             };
         });
 
+        const XLSX = await import('xlsx');
         const ws = XLSX.utils.json_to_sheet(exportData);
         ws['!cols'] = [
             { wch: 8 },  // ID
@@ -488,6 +489,7 @@ export const generatePaymentExcelFile = async ({
             };
         });
 
+        const XLSX = await import('xlsx');
         const ws = XLSX.utils.json_to_sheet(exportData);
         ws['!cols'] = [
             { wch: 8 },   // ID
@@ -631,6 +633,7 @@ export const generateTransactionExcelFile = async ({
             };
         });
 
+        const XLSX = await import('xlsx');
         const ws = XLSX.utils.json_to_sheet(exportData);
         ws['!cols'] = [
             { wch: 8 },   // ID
@@ -774,6 +777,7 @@ export const generateSubResellerExcelFile = async ({
             };
         });
 
+        const XLSX = await import('xlsx');
         const ws = XLSX.utils.json_to_sheet(exportData);
         ws['!cols'] = [
             { wch: 8 },   // ID
